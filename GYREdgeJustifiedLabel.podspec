@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = 'https://github.com/gyratorycircus/GYREdgeJustifiedLabel'
-  s.screenshots      = 'https://github.com/gyratorycircus/GYREdgeJustifiedLabel/blob/master/screenshot.png'
+  s.screenshots      = 'https://raw.githubusercontent.com/gyratorycircus/GYREdgeJustifiedLabel/master/screenshot.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'gyratorycircus' => 'gyratorycircus@icloud.com' }
   s.source           = { :git => 'https://github.com/gyratorycircus/GYREdgeJustifiedLabel.git', :tag => s.version.to_s }

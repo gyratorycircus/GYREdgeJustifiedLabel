@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GYREdgeJustifiedLabel'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'A subclass of UILabel allowing for left and right justified text on a single line.'
 
   s.description      = <<-DESC

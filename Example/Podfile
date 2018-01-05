@@ -1,0 +1,12 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'GYREdgeJustifiedLabel_Example' do
+  pod 'GYREdgeJustifiedLabel', :path => '../'
+
+  target 'GYREdgeJustifiedLabel_Tests' do
+    inherit! :search_paths
+
+  end
+end

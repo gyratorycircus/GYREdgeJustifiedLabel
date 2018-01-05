@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GYREdgeJustifiedLabel_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3N2-EV-TmC">
+                                <rect key="frame" x="27.5" y="40" width="320" height="627"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1000" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4Yd-iB-JdG">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="239.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ILe-9L-oav" customClass="EdgeJustifiedLabel" customModule="GYREdgeJustifiedLabel">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="Regular Left"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="Regular Right"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xSk-1e-yo1" customClass="EdgeJustifiedLabel" customModule="GYREdgeJustifiedLabel">
+                                                <rect key="frame" x="0.0" y="36.5" width="320" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="Medium length text"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="and minimum spacing"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumSpacing">
+                                                        <real key="value" value="58"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3fX-0n-R76" customClass="EdgeJustifiedLabel" customModule="GYREdgeJustifiedLabel">
+                                                <rect key="frame" x="0.0" y="73" width="320" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="Short left text"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="enough right text to force shrink"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumSpacing">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="G5y-t0-F4I" customClass="EdgeJustifiedLabel" customModule="GYREdgeJustifiedLabel">
+                                                <rect key="frame" x="0.0" y="109.5" width="320" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="when collision encountered"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumSpacing">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="Truncate right tail text"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iBTruncationStyle">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="8rf-Px-IgH" customClass="EdgeJustifiedLabel" customModule="GYREdgeJustifiedLabel">
+                                                <rect key="frame" x="0.0" y="146" width="320" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="Truncate both tails sss"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="equally on collision sss"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumSpacing">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iBTruncationStyle">
+                                                        <integer key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="rFY-DO-R6k" customClass="EdgeJustifiedLabel" customModule="GYREdgeJustifiedLabel">
+                                                <rect key="frame" x="0.0" y="182.5" width="320" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="Truncate right text at "/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="the  head on collision"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumSpacing">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iBTruncationStyle">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="eKg-ji-myJ" customClass="EdgeJustifiedLabel" customModule="GYREdgeJustifiedLabel">
+                                                <rect key="frame" x="0.0" y="219" width="320" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="Truncate both strings"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="rightText" value="in the center on collision"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumSpacing">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iBTruncationStyle">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ILe-9L-oav" firstAttribute="width" secondItem="3N2-EV-TmC" secondAttribute="width" id="1zv-fi-oqe"/>
+                                    <constraint firstAttribute="bottom" secondItem="4Yd-iB-JdG" secondAttribute="bottom" id="BSb-uj-cvl"/>
+                                    <constraint firstItem="4Yd-iB-JdG" firstAttribute="top" secondItem="3N2-EV-TmC" secondAttribute="top" id="eYg-em-a0o"/>
+                                    <constraint firstAttribute="width" constant="320" id="orm-ZR-hkI"/>
+                                    <constraint firstItem="4Yd-iB-JdG" firstAttribute="leading" secondItem="3N2-EV-TmC" secondAttribute="leading" id="rui-1O-HBU"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Yd-iB-JdG" secondAttribute="trailing" id="ym0-ES-0IA"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="3N2-EV-TmC" secondAttribute="bottom" id="dFG-SM-uJY"/>
+                            <constraint firstItem="3N2-EV-TmC" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="u9D-dg-aEC"/>
+                            <constraint firstItem="3N2-EV-TmC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="xjW-tX-3gE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="24.800000000000001" y="31.934032983508249"/>
+        </scene>
+    </scenes>
+</document>

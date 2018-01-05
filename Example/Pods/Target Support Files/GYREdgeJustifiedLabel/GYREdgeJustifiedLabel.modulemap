@@ -1,0 +1,6 @@
+framework module GYREdgeJustifiedLabel {
+  umbrella header "GYREdgeJustifiedLabel-umbrella.h"
+
+  export *
+  module * { export * }
+}

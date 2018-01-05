@@ -1,0 +1,16 @@
+PODS:
+  - GYREdgeJustifiedLabel (0.1.0)
+
+DEPENDENCIES:
+  - GYREdgeJustifiedLabel (from `../`)
+
+EXTERNAL SOURCES:
+  GYREdgeJustifiedLabel:
+    :path: ../
+
+SPEC CHECKSUMS:
+  GYREdgeJustifiedLabel: 6df411dd54e8874f4d2787d8ce734f6143c17c03
+
+PODFILE CHECKSUM: e3453304bf541146452bec92a825fed7543db0fa
+
+COCOAPODS: 1.3.1

@@ -1,0 +1,6 @@
+framework module Pods_GYREdgeJustifiedLabel_Example {
+  umbrella header "Pods-GYREdgeJustifiedLabel_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

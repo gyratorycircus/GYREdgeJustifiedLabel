@@ -55,9 +55,15 @@ import UIKit
 
     /// The text to be shown left justified.
     @IBInspectable public var leftText: String?
-    // The text to be shown right justified.
+    /// The text to be shown right justified.
     @IBInspectable public var rightText: String?
-    // A minimum spacing value between the left and right text.
+    
+    /// Color used to draw the left text. Defaults to using `textColor` if nil.
+    @IBInspectable public var leftTextColor: UIColor?
+    /// Color used to draw the right text. Defaults to using `textColor` if nil.
+    @IBInspectable public var rightTextColor: UIColor?
+    
+    /// A minimum spacing value between the left and right text.
     @IBInspectable public var minimumSpacing: CGFloat = 0
     /// The style of truncation that should be applied if the label runs out of space.
     public var truncationStyle: TruncationStyle = .none
@@ -84,7 +90,7 @@ import UIKit
         let nonNilLeftText = (leftText ?? "") as NSString
         let nonNilRightText = (rightText ?? "") as NSString
         
-        var workingFont = font ?? UIFont.systemFont(ofSize: 12)
+        var workingFont = font!
         var leftSize = nonNilLeftText.naturalRect(workingFont).size
         var rightSize = nonNilRightText.naturalRect(workingFont).size
         
@@ -123,15 +129,48 @@ import UIKit
         }
         
         #if swift(>=4.0)
-            let leftAttrs: [NSAttributedStringKey : Any] = [.font: workingFont, .paragraphStyle: leftParagraphStyle()]
-            let rightAttrs: [NSAttributedStringKey : Any] = [.font: workingFont, .paragraphStyle: rightParagraphStyle()]
+            let leftAttrs: [NSAttributedStringKey : Any] = [
+                .font: workingFont,
+                .paragraphStyle: leftParagraphStyle(),
+                .foregroundColor: leftTextColor ?? textColor!
+            ]
+            let rightAttrs: [NSAttributedStringKey : Any] = [
+                .font: workingFont,
+                .paragraphStyle: rightParagraphStyle(),
+                .foregroundColor: rightTextColor ?? textColor!
+            ]
         #else
-            let leftAttrs: [String : Any] = [NSFontAttributeName: workingFont, NSParagraphStyleAttributeName: leftParagraphStyle()]
-            let rightAttrs: [String : Any] =  [NSFontAttributeName: workingFont, NSParagraphStyleAttributeName: rightParagraphStyle()]
+            let leftAttrs: [String : Any] = [
+                NSFontAttributeName: workingFont,
+                NSParagraphStyleAttributeName: leftParagraphStyle(),
+                NSForegroundColorAttributeName: leftTextColor ?? textColor!
+            ]
+            let rightAttrs: [String : Any] =  [
+                NSFontAttributeName: workingFont,
+                NSParagraphStyleAttributeName: rightParagraphStyle(),
+                NSForegroundColorAttributeName: rightTextColor ?? textColor!
+            ]
         #endif
-
-        let leftRect = CGRect(origin: CGPoint(x: 0, y: rect.height - leftSize.height), size: leftSize)
-        let rightRect = CGRect(origin: CGPoint(x: rect.width - rightSize.width, y: rect.height - rightSize.height), size: rightSize)
+        
+        // The origin location depends on the baseline alignment.
+        var originY: CGFloat = 0
+        
+        switch (baselineAdjustment) {
+        case .alignBaselines:
+            // UIFont.ascender is the height from the baseline to the top, conveniently also the Y position of the baseline.
+            let originalBaselineY = font!.ascender
+            let currentBaselineY = workingFont.ascender
+            originY = originalBaselineY - currentBaselineY
+        
+        case .alignCenters:
+            originY = (rect.height - workingFont.lineHeight) / 2
+            
+        case .none:
+            break
+        }
+        
+        let leftRect = CGRect(origin: CGPoint(x: 0, y: originY), size: leftSize)
+        let rightRect = CGRect(origin: CGPoint(x: rect.width - rightSize.width, y: originY), size: rightSize)
         
         nonNilLeftText.draw(in: leftRect, withAttributes: leftAttrs)
         nonNilRightText.draw(in: rightRect, withAttributes: rightAttrs)

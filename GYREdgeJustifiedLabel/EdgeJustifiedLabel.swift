@@ -79,6 +79,19 @@ import UIKit
         }
     }
     
+    /// Color used to draw the left text when highlighted. Defaults to using `textColor` if nil.
+    @IBInspectable public var leftHighlightedTextColor: UIColor? {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    /// Color used to draw the right text when highlighted. Defaults to using `textColor` if nil.
+    @IBInspectable public var rightHighlightedTextColor: UIColor? {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
     /// A minimum spacing value between the left and right text.
     @IBInspectable public var minimumSpacing: CGFloat = 0 {
         didSet {
@@ -152,27 +165,34 @@ import UIKit
             }
         }
         
+        let leftColor = isHighlighted
+            ? leftHighlightedTextColor ?? highlightedTextColor ?? leftTextColor ?? textColor!
+            : leftTextColor ?? textColor!
+        let rightColor = isHighlighted
+            ? rightHighlightedTextColor ?? highlightedTextColor ?? rightTextColor ?? textColor!
+            : rightTextColor ?? textColor!
+        
         #if swift(>=4.0)
             let leftAttrs: [NSAttributedStringKey : Any] = [
                 .font: workingFont,
                 .paragraphStyle: leftParagraphStyle(),
-                .foregroundColor: leftTextColor ?? textColor!
+                .foregroundColor: leftColor
             ]
             let rightAttrs: [NSAttributedStringKey : Any] = [
                 .font: workingFont,
                 .paragraphStyle: rightParagraphStyle(),
-                .foregroundColor: rightTextColor ?? textColor!
+                .foregroundColor: rightColor
             ]
         #else
             let leftAttrs: [String : Any] = [
                 NSFontAttributeName: workingFont,
                 NSParagraphStyleAttributeName: leftParagraphStyle(),
-                NSForegroundColorAttributeName: leftTextColor ?? textColor!
+                NSForegroundColorAttributeName: leftColor
             ]
             let rightAttrs: [String : Any] =  [
                 NSFontAttributeName: workingFont,
                 NSParagraphStyleAttributeName: rightParagraphStyle(),
-                NSForegroundColorAttributeName: rightTextColor ?? textColor!
+                NSForegroundColorAttributeName: rightColor
             ]
         #endif
         

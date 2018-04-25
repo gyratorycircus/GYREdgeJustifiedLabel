@@ -1,5 +1,9 @@
 ## GYREdgeJustifiedLabel Changelog
 
+### 0.1.3
+
+* Supporting `highlightedTextColor` and `left/right` variants.
+
 ### 0.1.2
 
 * Flagging redrawing needs after changing attributes.

@@ -1,5 +1,9 @@
 ## GYREdgeJustifiedLabel Changelog
 
+### 0.1.2
+
+* Flagging redrawing needs after changing attributes.
+
 ### 0.1.1
 
 * Adding support for `UILabel.textColor`, and adding properties for `leftTextColor` and `rightTextColor`.

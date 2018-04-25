@@ -54,19 +54,43 @@ import UIKit
 @objc public class EdgeJustifiedLabel: UILabel {
 
     /// The text to be shown left justified.
-    @IBInspectable public var leftText: String?
+    @IBInspectable public var leftText: String? {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     /// The text to be shown right justified.
-    @IBInspectable public var rightText: String?
+    @IBInspectable public var rightText: String? {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     
     /// Color used to draw the left text. Defaults to using `textColor` if nil.
-    @IBInspectable public var leftTextColor: UIColor?
+    @IBInspectable public var leftTextColor: UIColor? {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     /// Color used to draw the right text. Defaults to using `textColor` if nil.
-    @IBInspectable public var rightTextColor: UIColor?
+    @IBInspectable public var rightTextColor: UIColor? {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     
     /// A minimum spacing value between the left and right text.
-    @IBInspectable public var minimumSpacing: CGFloat = 0
+    @IBInspectable public var minimumSpacing: CGFloat = 0 {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     /// The style of truncation that should be applied if the label runs out of space.
-    public var truncationStyle: TruncationStyle = .none
+    public var truncationStyle: TruncationStyle = .none {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     
     // Need a wrapper around the `truncationStyle` enum to have a @IBInspectable property.
     @available(*, unavailable, message: "This property is reserved for Interface Builder. Use 'truncationStyle' instead.")

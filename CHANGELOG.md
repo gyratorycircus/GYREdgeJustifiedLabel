@@ -1,5 +1,12 @@
 ## GYREdgeJustifiedLabel Changelog
 
+### 0.1.4
+
+* Changing default `truncationStyle` enum.
+* Adding Objective-C support for `truncationStyle` property.
+* Improved `intrinsicContentSize` support.
+* Fixing `IBDesignable` capability.
+
 ### 0.1.3
 
 * Supporting `highlightedTextColor` and `left/right` variants.

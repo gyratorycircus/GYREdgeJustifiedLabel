@@ -30,7 +30,10 @@ import UIKit
 /// The style of truncation to be applied to an EdgeJustifiedLabel
 @objc public enum TruncationStyle: Int {
     /// No truncation applied; left and right text may overlap.
-    case none = 0
+    case none = -1
+    
+    /// Equal amounts of truncation is applied to the left tail and right head.
+    case bothCenter = 0
     
     /// All right text is shown, and left text is tail truncated.
     case leftTail = 1
@@ -44,24 +47,27 @@ import UIKit
     /// Left and right text is tail truncated equal amounts.
     case bothTails = 4
     
-    /// Equal amounts of truncation is applied to the left tail and right head.
-    case bothCenter = 5
+    /// Left and right text is head truncated equal amounts.
+    case bothHeads =  5
 }
 
 /// This class allows two single-line strings to be shown left and right justified, and equally scaled or truncated to fit the label bounds.
 /// This capability is not possible using two separate UILabels and autolayout, as one will always scale before the other, nor is it possible via NSAttributedString, which does not allow left and right justified text to be displayed on a single line.
-@IBDesignable
-@objc public class EdgeJustifiedLabel: UILabel {
+@objc @IBDesignable public class EdgeJustifiedLabel: UILabel {
 
     /// The text to be shown left justified.
     @IBInspectable public var leftText: String? {
         didSet {
+            // Set the `text` property to hook into automatic intrinsic content sizing.
+            super.text = (leftText ?? "") + (rightText ?? "")
             setNeedsDisplay()
         }
     }
     /// The text to be shown right justified.
     @IBInspectable public var rightText: String? {
         didSet {
+            // Set the `text` property to hook into automatic intrinsic content sizing.
+            super.text = (leftText ?? "") + (rightText ?? "")
             setNeedsDisplay()
         }
     }
@@ -99,13 +105,13 @@ import UIKit
         }
     }
     /// The style of truncation that should be applied if the label runs out of space.
-    public var truncationStyle: TruncationStyle = .none {
+    @objc public var truncationStyle: TruncationStyle = .none {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    // Need a wrapper around the `truncationStyle` enum to have a @IBInspectable property.
+    // Need a wrapper around the `truncationStyle` enum to have an @IBInspectable property.
     @available(*, unavailable, message: "This property is reserved for Interface Builder. Use 'truncationStyle' instead.")
     @IBInspectable var iBTruncationStyle: Int = 0 {
         willSet {
@@ -121,6 +127,12 @@ import UIKit
     @available(*, unavailable, message: "EdgeJustifiedLabel ignores `text`; please use `leftText` and `rightText` instead.")
     override public var text: String? {
         didSet {}
+    }
+    
+    override public var intrinsicContentSize: CGSize {
+        var size = super.intrinsicContentSize
+        size.width += minimumSpacing
+        return size
     }
     
     override public func drawText(in rect: CGRect) {
@@ -153,7 +165,7 @@ import UIKit
         
         if missingWidth > 0 {
             switch (truncationStyle) {
-            case .bothCenter, .bothTails:
+            case .bothCenter, .bothTails, .bothHeads:
                 leftSize.width -= missingWidth * 0.5
                 rightSize.width -= missingWidth * 0.5
             case .leftTail:
@@ -249,6 +261,8 @@ private extension TruncationStyle {
         switch self {
         case .leftTail, .bothTails, .bothCenter:
             return .byTruncatingTail
+        case .bothHeads:
+            return .byTruncatingHead
         default:
             return nil
         }
@@ -259,7 +273,7 @@ private extension TruncationStyle {
         switch self {
         case .rightTail, .bothTails:
             return .byTruncatingTail
-        case .rightHead, .bothCenter:
+        case .rightHead, .bothCenter, .bothHeads:
             return .byTruncatingHead
         default:
             return nil

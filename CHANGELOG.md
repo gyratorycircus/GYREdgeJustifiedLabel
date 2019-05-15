@@ -1,5 +1,9 @@
 ## GYREdgeJustifiedLabel Changelog
 
+### 0.1.5
+
+* Supports Swift 4.2 and 5.0
+
 ### 0.1.4
 
 * Changing default `truncationStyle` enum.

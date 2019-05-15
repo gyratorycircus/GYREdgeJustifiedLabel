@@ -33,7 +33,7 @@ To run this example project for yourself, clone the repo, and run `pod install` 
 
 ## Requirements
 
-Compatible with Swift 3.2 or 4.0.
+Compatible with Swift 3.2, 4.0, 4.2, and 5.0.
 When installing with cocoapods, iOS 8 or later is required, though the source file itself will compile for iOS 7.
 
 ## Installation

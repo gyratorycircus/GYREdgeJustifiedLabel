@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GYREdgeJustifiedLabel'
-  s.version          = '0.1.4'
+  s.version          = '0.1.5'
   s.summary          = 'A subclass of UILabel allowing for left and right justified text on a single line.'
 
   s.description      = <<-DESC
@@ -22,6 +22,8 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'gyratorycircus' => 'gyratorycircus@icloud.com' }
   s.source           = { :git => 'https://github.com/gyratorycircus/GYREdgeJustifiedLabel.git', :tag => s.version.to_s }
+  s.swift_version   = '4.2'
+  s.swift_versions  = ['3.2', '4.0', '4.2', '5.0']
 
   # While the source code would support iOS 7, "Swift support uses dynamic frameworks and is therefore only supported on iOS > 8."
   s.ios.deployment_target = '8.0'

@@ -184,7 +184,18 @@ import UIKit
             ? rightHighlightedTextColor ?? highlightedTextColor ?? rightTextColor ?? textColor!
             : rightTextColor ?? textColor!
         
-        #if swift(>=4.0)
+        #if swift(>=4.2)
+            let leftAttrs: [NSAttributedString.Key : Any] = [
+                .font: workingFont,
+                .paragraphStyle: leftParagraphStyle(),
+                .foregroundColor: leftColor
+            ]
+            let rightAttrs: [NSAttributedString.Key : Any] = [
+                .font: workingFont,
+                .paragraphStyle: rightParagraphStyle(),
+                .foregroundColor: rightColor
+            ]
+        #elseif swift(>=4.0)
             let leftAttrs: [NSAttributedStringKey : Any] = [
                 .font: workingFont,
                 .paragraphStyle: leftParagraphStyle(),
@@ -221,7 +232,7 @@ import UIKit
         case .alignCenters:
             originY = (rect.height - workingFont.lineHeight) / 2
             
-        case .none:
+        default:
             break
         }
         
@@ -284,7 +295,9 @@ private extension TruncationStyle {
 private extension NSString {
     /// Convenience to get the size of a string with a font.
     func naturalRect(_ font: UIFont) -> CGRect {
-        #if swift(>=4.0)
+        #if swift(>=4.2)
+            let attrs: [NSAttributedString.Key: Any] = [.font: font]
+        #elseif swift(>=4.0)
             let attrs: [NSAttributedStringKey: Any] = [.font: font]
         #else
             let attrs = [NSFontAttributeName: font]

@@ -1,5 +1,9 @@
 ## GYREdgeJustifiedLabel Changelog
 
+### 0.1.6
+
+* Avoids bug when initializing a system UIFont by name in iOS 13 ([rdar](https://openradar.appspot.com/6153065))
+
 ### 0.1.5
 
 * Supports Swift 4.2 and 5.0

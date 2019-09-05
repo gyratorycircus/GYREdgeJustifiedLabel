@@ -150,7 +150,7 @@ import UIKit
         var adjustsFontSize = adjustsFontSizeToFitWidth && minimumScaleFactor > 0
         
         while adjustsFontSize && rect.width < leftSize.width + rightSize.width + minimumSpacing {
-            workingFont = UIFont(name: workingFont.fontName, size: workingFont.pointSize - 0.5)!
+            workingFont = workingFont.withSize(workingFont.pointSize - 0.5)
             
             leftSize = nonNilLeftText.naturalRect(workingFont).size
             rightSize = nonNilRightText.naturalRect(workingFont).size
